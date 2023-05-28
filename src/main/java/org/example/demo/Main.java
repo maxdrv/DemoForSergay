@@ -27,7 +27,8 @@ public class Main {
 
             } else if (Objects.equals(input, "print")) {
                 List<String> lines = Files.readAllLines(path);
-                for (String line : lines) {
+                for (int i = 0; i < lines.size(); i++) {
+                    String line = lines.get(i);
                     System.out.println(line);
                 }
             } else if (input.startsWith("delete ")) {
@@ -71,7 +72,8 @@ public class Main {
     private static void deleteBySubstring(Path path, String substring) throws IOException {
         List<String> lines = Files.readAllLines(path);  // читаю все линии
         List<String> result = new ArrayList<>();
-        for (String line : lines) {                     // проходим по всему файлу
+        for (int i = 0; i < lines.size(); i++) {        // проходим по всему файлу
+            String line = lines.get(i);
             if (!line.contains(substring)) {            // если строка не содержит подстроку
                 result.add(line);                       // то оставляем ее в результате
             }
