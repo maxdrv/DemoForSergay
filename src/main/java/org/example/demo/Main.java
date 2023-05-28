@@ -19,42 +19,11 @@ public class Main {
         while (true) {
             String input = new Scanner(System.in).nextLine();
             if (input.startsWith("add ")) {
-                String substring = input.substring(4);  // убрал первые 4 символа
-
-                // add to file
-                String textToAdd = substring + "\n";
-                Files.write(path, textToAdd.getBytes(), StandardOpenOption.APPEND);
-
+                addLine(path, input);
             } else if (Objects.equals(input, "print")) {
-                List<String> lines = Files.readAllLines(path);
-                for (int i = 0; i < lines.size(); i++) {
-                    String line = lines.get(i);
-                    System.out.println(line);
-                }
+                printAll(path);
             } else if (input.startsWith("delete ")) {
-                StringTokenizer tokenizer = new StringTokenizer(input, " ");
-
-                tokenizer.nextToken();  // пропускаю delete
-                if (!tokenizer.hasMoreTokens()) {
-                    System.out.println("в delete не указан способ удаления");
-                    continue;
-                }
-                String deleteType = tokenizer.nextToken();
-                if (!tokenizer.hasMoreTokens()) {
-                    System.out.println("после типа delete не указан параметр");
-                    continue;
-                }
-                String parameter = tokenizer.nextToken();
-
-                if (Objects.equals(deleteType, "idx")) {
-                    int idx = Integer.parseInt(parameter);
-                    deleteByIndex(path, idx);
-                } else if (Objects.equals(deleteType, "sub")) {
-                    deleteBySubstring(path, parameter);
-                } else {
-                    System.out.println("не известный тип delete");
-                    continue;
-                }
+                deleteByFilter(path, input);
             } else if (Objects.equals(input, "exit")) {
                 break;
             } else {
@@ -63,6 +32,47 @@ public class Main {
         }
     }
 
+    private static void deleteByFilter(Path path, String input) throws IOException {
+        StringTokenizer tokenizer = new StringTokenizer(input, " ");
+
+        tokenizer.nextToken();  // пропускаю delete
+        if (!tokenizer.hasMoreTokens()) {
+            System.out.println("в delete не указан способ удаления");
+            return;
+        }
+        String deleteType = tokenizer.nextToken();
+        if (!tokenizer.hasMoreTokens()) {
+            System.out.println("после типа delete не указан параметр");
+            return;
+        }
+        String parameter = tokenizer.nextToken();
+
+        if (Objects.equals(deleteType, "idx")) {
+            int idx = Integer.parseInt(parameter);
+            deleteByIndex(path, idx);
+        } else if (Objects.equals(deleteType, "sub")) {
+            deleteBySubstring(path, parameter);
+        } else {
+            System.out.println("не известный тип delete");
+        }
+    }
+
+    private static void addLine(Path path, String input) throws IOException {
+        String substring = input.substring(4);  // убрал первые 4 символа
+
+        // add to file
+        String textToAdd = substring + "\n";
+        Files.write(path, textToAdd.getBytes(), StandardOpenOption.APPEND);
+    }
+
+    private static void printAll(Path path) throws IOException {
+        List<String> lines = Files.readAllLines(path);
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+            System.out.println(line);
+        }
+    }
+    
     private static void deleteByIndex(Path path, int idx) throws IOException {
         List<String> lines = Files.readAllLines(path);  // читаю все линии
         lines.remove(idx);                              // удаляю по индексу
