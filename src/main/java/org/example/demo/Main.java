@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -33,17 +31,52 @@ public class Main {
                     System.out.println(line);
                 }
             } else if (input.startsWith("delete ")) {
-                String substring = input.substring(7);
-                int idx = Integer.parseInt(substring);
-                List<String> lines = Files.readAllLines(path);  // читаю все линии
-                lines.remove(idx);                              // удаляю по индексу
-                Files.write(path, lines);                       // записываю все оставшиеся линии в файл
+                StringTokenizer tokenizer = new StringTokenizer(input, " ");
+
+                tokenizer.nextToken();  // пропускаю delete
+                if (!tokenizer.hasMoreTokens()) {
+                    System.out.println("в delete не указан способ удаления");
+                    continue;
+                }
+                String deleteType = tokenizer.nextToken();
+                if (!tokenizer.hasMoreTokens()) {
+                    System.out.println("после типа delete не указан параметр");
+                    continue;
+                }
+                String parameter = tokenizer.nextToken();
+
+                if (Objects.equals(deleteType, "idx")) {
+                    int idx = Integer.parseInt(parameter);
+                    deleteByIndex(path, idx);
+                } else if (Objects.equals(deleteType, "sub")) {
+                    deleteBySubstring(path, parameter);
+                } else {
+                    System.out.println("не известный тип delete");
+                    continue;
+                }
             } else if (Objects.equals(input, "exit")) {
                 break;
             } else {
                 System.out.println("only add and exit is valid commands");
             }
         }
+    }
+
+    private static void deleteByIndex(Path path, int idx) throws IOException {
+        List<String> lines = Files.readAllLines(path);  // читаю все линии
+        lines.remove(idx);                              // удаляю по индексу
+        Files.write(path, lines);                       // записываю все оставшиеся линии в файл
+    }
+
+    private static void deleteBySubstring(Path path, String substring) throws IOException {
+        List<String> lines = Files.readAllLines(path);  // читаю все линии
+        List<String> result = new ArrayList<>();
+        for (String line : lines) {                     // проходим по всему файлу
+            if (!line.contains(substring)) {            // если строка не содержит подстроку
+                result.add(line);                       // то оставляем ее в результате
+            }
+        }
+        Files.write(path, result);                      // записываю все оставшиеся строки
     }
 
 }
