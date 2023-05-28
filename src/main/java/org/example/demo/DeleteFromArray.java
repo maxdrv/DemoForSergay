@@ -1,6 +1,6 @@
 package org.example.demo;
 
-public class Main {
+public class DeleteFromArray {
 
     public static String[] delete(String[] original, int index) {
         if (index < 0 || index > original.length - 1) {

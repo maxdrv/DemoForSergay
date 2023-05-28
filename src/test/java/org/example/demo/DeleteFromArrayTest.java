@@ -3,7 +3,7 @@ package org.example.demo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class MainTest {
+public class DeleteFromArrayTest {
 
     @Test
     void mathIsOk() {
@@ -15,7 +15,7 @@ public class MainTest {
     void removeElement() {
         String[] array = new String[]{"a", "b", "c"};
 
-        String[] actual = Main.delete(array, 0);
+        String[] actual = DeleteFromArray.delete(array, 0);
 
         Assertions.assertArrayEquals(new String[]{"b", "c"}, actual);
     }
@@ -24,7 +24,7 @@ public class MainTest {
     void removeElementAtNegativeIndex() {
         String[] array = new String[]{"a", "b", "c"};
 
-        String[] actual = Main.delete(array, -1);
+        String[] actual = DeleteFromArray.delete(array, -1);
 
         Assertions.assertArrayEquals(new String[]{"a", "b", "c"}, actual);
     }
@@ -33,7 +33,7 @@ public class MainTest {
     void nonExistentIndex() {
         String[] array = new String[]{"a", "b", "c"};
 
-        String[] actual = Main.delete(array, 100);
+        String[] actual = DeleteFromArray.delete(array, 100);
 
         Assertions.assertArrayEquals(new String[]{"a", "b", "c"}, actual);
     }
@@ -42,7 +42,7 @@ public class MainTest {
     void indexAtTheEndOfArray() {
         String[] array = new String[]{"a", "b", "c"};
 
-        String[] actual = Main.delete(array, 3);
+        String[] actual = DeleteFromArray.delete(array, 3);
 
         Assertions.assertArrayEquals(new String[]{"a", "b", "c"}, actual);
     }
