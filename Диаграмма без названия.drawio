@@ -1,9 +1,67 @@
-<mxfile host="app.diagrams.net" modified="2023-06-09T07:04:45.469Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 YaBrowser/23.3.3.762 Yowser/2.5 Safari/537.36" version="21.3.8" etag="OKWm7dGuQT4z--kAmiRH" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-09T07:17:24.259Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 YaBrowser/23.3.3.762 Yowser/2.5 Safari/537.36" etag="jjySck_XU7I4KscOCDh1" version="21.3.8" type="github">
   <diagram name="Страница 1" id="BI8dlonJ9KQ3C0ewk3rY">
-    <mxGraphModel>
+    <mxGraphModel dx="1258" dy="740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-1" value="Объявить файл, проврить существует ли он, если не суещствует, то создать. Затем вернуть File&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="40" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UfPoSvLCwOEUvrdILgkI-2" target="UfPoSvLCwOEUvrdILgkI-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-2" value="Бесконеный цикл, который принимает запросы от пользователя" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="UfPoSvLCwOEUvrdILgkI-3" target="UfPoSvLCwOEUvrdILgkI-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-3" value="Прочитать, то что ввел пользователь" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="200" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="UfPoSvLCwOEUvrdILgkI-5" target="UfPoSvLCwOEUvrdILgkI-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-5" value="Разобрать на части, то что ввел пользователь, понять тип команды, и данные для этой команды. Если введена какая то бессмыслица, то кинуть ошибку" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="320" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UfPoSvLCwOEUvrdILgkI-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.395;entryY=1.063;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="UfPoSvLCwOEUvrdILgkI-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="719" y="525.04" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="720" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-9" value="если команда exit" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="560" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-12" value="Завершаем работу" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="680" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-13" value="true" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="640" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-15" value="false" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="555" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="UfPoSvLCwOEUvrdILgkI-20" target="UfPoSvLCwOEUvrdILgkI-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UfPoSvLCwOEUvrdILgkI-20" value="Исполнить команду" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="440" width="200" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
