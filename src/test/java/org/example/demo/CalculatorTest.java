@@ -14,6 +14,14 @@ public class CalculatorTest {
     }
 
     @Test
+    void addWithSpaces() {
+        Calculator calculator = new DummyCalculator();
+
+        double result = calculator.calculate("1 + 1");
+        Assertions.assertEquals(2, result);
+    }
+
+    @Test
     void sub() {
         Calculator calculator = new DummyCalculator();
 
