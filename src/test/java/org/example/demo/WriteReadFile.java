@@ -49,4 +49,18 @@ public class WriteReadFile {
                 .contains("any text to write\nsecond line");
     }
 
+    @Test
+    void howToTranslateCheckedExceptionIntoUnchecked() {
+        String content = read();
+    }
+
+    private String read() {
+        File file = new File("file.txt");
+        try {
+            return Files.readString(file.toPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
